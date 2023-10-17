@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 test('Code is strict typed')
     ->expect(['Domain', 'Core', 'App'])
     ->toUseStrictTypes();
