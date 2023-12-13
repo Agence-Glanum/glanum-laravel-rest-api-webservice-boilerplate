@@ -1,11 +1,58 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Une API c'est quoi ?
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Une API (application programming interface ou interface de programmation applicative en français) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle un logiciel offre des services à d'autres logiciels. Elle est offerte par une bibliothèque logicielle ou un service web.
+
+On parle d'API à partir du moment où une entité informatique cherche à agir avec ou sur un système tiers et que cette interaction se fait de manière normalisée en respectant les contraintes d'accès définies par le système tiers. On dit alors que le système tiers « expose une API ».
+
+Attention, **une API n'est pas toujours un service web**. Malgré l'abus de language qui vise à dire qu'une API est lié au web pour la récupération des données, nous retrouvons des API dans d'autres contextes, comme les références API des languages ou bibliothèques.
+
+Ceci est une API mais service web:
+
+- [https://cat-fact.herokuapp.com/facts](https://cat-fact.herokuapp.com/facts)
+
+Ceci est aussi une API mais de référence logielle:
+
+- [https://laravel.com/api/master/index.html](https://laravel.com/api/master/index.html)
+
+## REST c'est quoi ?
+
+REST est un acronyme pour REpresentational State Transfer et un style architectural pour les systèmes hypermédias distribués.
+
+REST n'est pas un protocole ou une norme, **c'est un style architectural**. Au cours de la phase de développement, les développeurs d'API peuvent **mettre en œuvre REST de différentes manières**.
+
+Comme les autres styles architecturaux, REST a aussi ses principes directeurs et ses contraintes. Ces principes doivent être respectés pour qu'une interface de service puisse être qualifiée de RESTful.
+
+Une API (ou un service web) conforme au style architectural REST est appelée API REST (ou API RESTful).
+
+REST définit 6 contraintes architecturales qui font de tout service web une véritable API RESTful.
+
+- Uniform interface
+- Client-server
+- Stateless
+- Cacheable
+- Layered system
+- Code on demand (optional)
+
+## REST chez Glanum
+
+Même si il est de notre devoir de suivre au mieux les  contraintes architecturales REST, elles ne peuvent pas toutes toujours être respectées à la lettre.
+L'architecture logicielle étant aussi un jeu de compromis, toutes ces contraintes ne seront pas implémentées parfaitement. De plus, la définition de REST précise que les développeurs peuvent choisir la mise en oeuvre de REST.
+Nos API suivrons REST mais **ne seront pas RESTful**.
+
+## Structure du projet
+
+Le structure du projet prend exemple sur le domain driven design sans pour autant en faire une implémentation intégrale.
+
+Le répertoire `app` représente l'application et ses points d'entrés (Routing, Validations, Middlewares Controllers...).
+Le répertoire `domains` contient toutes les classes répondant directement aux règles métier du client (Models, Repositories...)
+Le répertoire `core` contient des outils généraux qui n'implémentent pas directement les règles métier du client mais utiles à ces dernières (Classe de génération de PDF). 
+
+Les reste des répertoires conservents leurs fonctionnements liés à Laravel.
+
+## Sources
+
+- [https://fr.wikipedia.org/wiki/Interface_de_programmation](https://fr.wikipedia.org/wiki/Interface_de_programmation)
+- [https://restfulapi.net/rest-architectural-constraints](https://restfulapi.net/rest-architectural-constraints)
 
 ## About Laravel
 
@@ -20,47 +67,3 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
