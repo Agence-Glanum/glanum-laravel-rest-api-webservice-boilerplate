@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\User;
 
 use Domain\Auth\V1\Models\User;
@@ -26,7 +28,7 @@ class CreateUserRequest extends FormRequest
             'id' => 'sometimes|uuid',
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|unique:'.User::class.',email',
-            'password' => 'required|string|max:255'
+            'password' => 'required|string|max:255',
         ];
     }
 }

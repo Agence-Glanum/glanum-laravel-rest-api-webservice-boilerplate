@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\Auth\V1\Resources;
 
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class UserResource extends JsonResource
             'id' => $this->whenHas('id', $this->id),
             'name' => $this->whenHas('name', $this->name),
             'email' => $this->whenHas('email', $this->email),
-            'created_at' => $this->whenHas('created_at', $this->created_at)
+            'created_at' => $this->whenHas('created_at', $this->created_at),
         ];
     }
 }

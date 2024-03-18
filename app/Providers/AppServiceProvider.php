@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Query\Builder as BaseBuilder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,7 +29,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $macro = function (int $maxResults = null, int $defaultSize = null, string $type = 'paginate') {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        $macro = function (?int $maxResults = null, ?int $defaultSize = null, string $type = 'paginate') {
             $numberParameter = 'number';
             $cursorParameter = 'cursor';
             $sizeParameter = 'size';
